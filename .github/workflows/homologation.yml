@@ -69,7 +69,7 @@ jobs:
         env:
           EU: "${{ secrets.SSH_USER }}"
         run: |
-          echo $EU
+          print $EU
       - name: Prepare Deploy
         uses: appleboy/discord-action@master
         with:
