@@ -1,0 +1,18 @@
+name: CI Homologação
+on:
+  pull_request:
+    branches:
+      - develop
+jobs:
+  build:
+    name: build hml
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: Notify Build
+          uses: appleboy/discord-action@master
+          with:
+            webhook_id: ${{ secrets.WEBHOOK_ID }}
+            webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
+            args: Preparando o Build e da Aplicação de Homologação.
+
