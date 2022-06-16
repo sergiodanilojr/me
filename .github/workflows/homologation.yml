@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Notify Build
+
           uses: appleboy/discord-action@master
           with:
             webhook_id: ${{ secrets.WEBHOOK_ID }}
