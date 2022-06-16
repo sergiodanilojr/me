@@ -10,10 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Notify Build
-
-          uses: appleboy/discord-action@master
-          with:
-            webhook_id: ${{ secrets.WEBHOOK_ID }}
-            webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
-            args: Preparando o build e da Aplicação de Homologação.
+        uses: appleboy/discord-action@master
+        with:
+          webhook_id: ${{ secrets.WEBHOOK_ID }}
+          webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
+          args: Preparando o build e da Aplicação de Homologação.
 
