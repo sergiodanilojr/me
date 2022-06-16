@@ -14,5 +14,5 @@ jobs:
           with:
             webhook_id: ${{ secrets.WEBHOOK_ID }}
             webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
-            args: Preparando o Build e da Aplicação de Homologação.
+            args: Preparando o build e da Aplicação de Homologação.
 
