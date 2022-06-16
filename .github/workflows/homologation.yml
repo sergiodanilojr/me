@@ -65,6 +65,11 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: develop
+      - name: testando
+        env:
+          EU: "${{ secrets.SSH_USER }}"
+        run: |
+          echo $EU
       - name: Prepare Deploy
         uses: appleboy/discord-action@master
         with:
@@ -88,7 +93,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: '${{ secrets.SSH_PRIVATE_KEY }}'
           port: ${{ secrets.SSH_PORT }}
           envs: USER_PASS
           script: |
