@@ -58,17 +58,20 @@ jobs:
     name: CD
     needs: tests
     runs-on: ubuntu-latest
-    environment: homolog
+    environment:
+      name: homolog
+      url: http://test.sergiodanilojr.com.br
     steps:
       - uses: actions/checkout@v2
         with:
           ref: develop
-      - name: Finished Build and Tests
+      - name: Prepare Deploy
         uses: appleboy/discord-action@master
         with:
           webhook_id: ${{ secrets.WEBHOOK_ID }}
           webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
           args: '@everyone preparando o deploy em Homologação :clock:'
+
       - name: Deploy to server of Homologation
         uses: easingthemes/ssh-deploy@v2.2.11
         env:
@@ -78,7 +81,7 @@ jobs:
           REMOTE_USER: ${{ secrets.SSH_USER }}
           TARGET: /home/${{ secrets.SSH_USER }}/ci-cd
 
-      - name: Execute comands SSH
+      - name: Execute commands SSH
         uses: appleboy/ssh-action@master
         env:
           USER_PASS: "${{ secrets.USER_PASS }}"
