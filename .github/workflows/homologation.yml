@@ -7,6 +7,7 @@ jobs:
   build:
     name: build hml
     runs-on: ubuntu-18.04
+#    environment: homologation
     steps:
       - uses: actions/checkout@v2
       - name: Notify Build
@@ -14,5 +15,11 @@ jobs:
         with:
           webhook_id: ${{ secrets.WEBHOOK_ID }}
           webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
-          args: Preparando o build e da Aplicação de Homologação.
+          args: Preparando o build da Aplicação de Homologação.
+      - name: Finish Build
+        uses: appleboy/discord-action@master
+        with:
+          webhook_id: ${{ secrets.WEBHOOK_ID }}
+          webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
+          args: Workflow Finalizado.
 
