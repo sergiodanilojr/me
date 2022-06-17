@@ -29,18 +29,23 @@ services:
             - ./.docker/nginx:/etc/nginx/conf.d
         networks:
             - app
-#    queue:
-#        container_name: app-queue
-#        image: app-queue
-#        restart: unless-stopped
-#        command: "php artisan queue:work"
-#        volumes:
-#            - ./:/var/www
-#        depends_on:
-#            - redis
-#            - app
-#        networks:
-#            - app
+    queue:
+        build:
+            args:
+                user: ${APP_USER}
+                uid: 1000
+            context: ./
+            dockerfile: ./.docker/Dockerfile
+        restart: unless-stopped
+        container_name: app-queue
+        command: "php artisan queue:work"
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+        networks:
+            - app
+
     redis:
         container_name: app-redis
         image: redis:latest
