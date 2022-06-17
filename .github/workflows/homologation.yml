@@ -58,7 +58,7 @@ jobs:
     name: CD
     needs: tests
     runs-on: ubuntu-latest
-    environment: homolog
+    # environment: homolog
     steps:
       - uses: actions/checkout@v2
         with:
