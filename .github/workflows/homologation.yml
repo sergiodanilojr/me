@@ -51,7 +51,7 @@ jobs:
         with:
           webhook_id: ${{ secrets.WEBHOOK_ID }}
           webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
-          args: '@everyone os testes froam finalizados :white_check_mark:'
+          args: '@everyone os testes foram finalizados :white_check_mark:'
 
 #-------------------------------------------------------------------------------------------------------------
   deploy:
@@ -74,7 +74,7 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.2.11
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rltgoDzvO --exclude .git --exclude .docker --exclude .github"
+          ARGS: "-rltgoDzvO --exclude .git --exclude .github"
           REMOTE_HOST: ${{ secrets.SSH_HOST }}
           REMOTE_USER: ${{ secrets.SSH_USER }}
           TARGET: /home/${{ secrets.SSH_USER }}/ci-cd
@@ -93,7 +93,7 @@ jobs:
             cd ci-cd/
             echo $USER_PASS | sudo -S docker-compose up -d
             echo $USER_PASS | sudo -S docker-compose exec -T app composer install
-            echo $USER_PASS | sudo -S docker-compose exec -T app php artisan migrate --force
+#            echo $USER_PASS | sudo -S docker-compose exec -T app php artisan migrate --force
 
       - name: Finish Deploy
         uses: appleboy/discord-action@master
