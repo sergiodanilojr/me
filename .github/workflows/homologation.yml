@@ -58,9 +58,7 @@ jobs:
     name: CD
     needs: tests
     runs-on: ubuntu-latest
-    environment:
-      name: homolog
-      url: http://test.sergiodanilojr.com.br
+    # environment: homolog
     steps:
       - uses: actions/checkout@v2
         with:
@@ -88,7 +86,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: '${{ secrets.SSH_PRIVATE_KEY }}'
           port: ${{ secrets.SSH_PORT }}
           envs: USER_PASS
           script: |
