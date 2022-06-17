@@ -51,7 +51,7 @@ jobs:
         with:
           webhook_id: ${{ secrets.WEBHOOK_ID }}
           webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
-          args: '@everyone os testes froam finalizados :white_check_mark:'
+          args: '@everyone os testes foram finalizados :white_check_mark:'
 
 #-------------------------------------------------------------------------------------------------------------
   deploy:
