@@ -29,22 +29,22 @@ services:
             - ./.docker/nginx:/etc/nginx/conf.d
         networks:
             - app
-#    queue:
-#        build:
-#            args:
-#                user: sergiodanilojr
-#                uid: 1000
-#            context: ./
-#            dockerfile: ./.docker/Dockerfile
-#        restart: unless-stopped
-#        container_name: app-queue
-#        command: "php artisan queue:work"
-#        volumes:
-#            - ./:/var/www
-#        depends_on:
-#            - redis
-#        networks:
-#            - app
+    queue:
+        build:
+            args:
+                user: sergiodanilojr
+                uid: 1000
+            context: ./
+            dockerfile: ./.docker/Dockerfile
+        restart: unless-stopped
+        container_name: app-queue
+        command: "php artisan queue:work"
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+        networks:
+            - app
 
     redis:
         container_name: app-redis
